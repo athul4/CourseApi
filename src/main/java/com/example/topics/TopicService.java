@@ -1,0 +1,24 @@
+package com.example.topics;
+
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+@Service
+public class TopicService {
+
+    private List<Topic> topics = Arrays.asList(
+            new Topic("1","Java","Java Description"),
+            new Topic("2","JS","JS Description"),
+            new Topic("3","TS","TS Description")
+    );
+
+    public List<Topic> getTopics(){
+        return topics;
+    }
+
+    public Topic getTopic(String id){
+        return topics.stream().filter(t->t.getId().equals(id)).findFirst().get();
+    }
+
+}
